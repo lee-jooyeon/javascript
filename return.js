@@ -15,4 +15,4 @@ function print(num){
     console.log(num);
 }
 
-print(5); // num < 0 값을 출력하지 않음
+print(1); // num < 0 값을 출력하지 않음
