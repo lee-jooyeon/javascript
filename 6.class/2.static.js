@@ -6,8 +6,8 @@ class Fruit {
         this.name = name;
         this.emoji = emoji;
     }
+    // 클래스 레벨의 메서드에서는(데이턱가 채워져 있지 않은 템플릿 형태) this를 참조할 수 없음
     static makeRandomFruit (name, emoji){ 
-        // 클래스 레벨의 메서드에서는(데이턱가 채워져 있지 않은 템플릿 형태) this를 참조할 수 없음
         return new Fruit(name, emoji);
     }
     //인스턴스 레벨의 메서드(함수)
