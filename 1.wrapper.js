@@ -6,4 +6,4 @@ console.log(number.toString());
 // 숫자가 문자열로 변환되어 출력
 
 const text = 'text'; // String 문자열
-text.length // String 객체
+text.length // String 객체 수정
