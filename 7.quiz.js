@@ -24,7 +24,7 @@ console.log(result); // [ '🍌', '🥝', '🍇', '🥝' ]
   // input: [ '🍌', '🥝', '🍇', '🥝' ], '🥝'
   // output: 2
 function count (array, item) {
-                            //값을 계속 저장할 counter  //value
+                            //값을 계속 저장할 counter value이 (for)처럼 빙글빙글 돎
       return array.reduce((counter, value) => {
           if(value === item){
             counter++;
@@ -34,10 +34,8 @@ function count (array, item) {
 }
 
 function count (array, item) {
-    return array.filter((value) => {
-        return value === item}).length;
+    return array.filter((value) => value === item).length;
 }
-
 // filter는 새로운 배열을 만듦
 
 console.log(count(['🍌', '🥝', '🍇', '🥝'], '🥝'));
@@ -53,7 +51,7 @@ console.log(count(['🍌', '🥝', '🍇', '🥝'], '🥝'));
 
 function match(array, array2){
     return array.filter(function(value){
-        return array2.includes(value);
+        return  array2.includes(value);
     });
 }
 
