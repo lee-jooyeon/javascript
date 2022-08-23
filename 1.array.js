@@ -26,7 +26,7 @@ array = Array.from({
     length: 2,
 });
 
-console.log(array);
+
 
 
 
