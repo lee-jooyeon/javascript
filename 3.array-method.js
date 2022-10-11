@@ -39,7 +39,7 @@ console.log(fruits);
 
 // 잘라진 새로운 배열을 만듦
 let newArr = fruits.slice(0, 2);
-console.log(newArr); //  [ '🍌', '🍒' ] 잘라진 새로운 배열을 반환 
+console.log(newArr); //  [ '🍌', '🍒' ] 잘라진 새로운 배열을 반환
 console.log(fruits); // [ '🍌', '🍒', '🍑' ]
 newArr = fruits.slice(-1); // 뒤에서부터
 console.log(newArr); // [ '🍑' ]
@@ -59,11 +59,11 @@ console.log(arr4);
 
 // 중첩 배열을 하나의 배열로 쫙 펴기
 let arr = [
-    [1, 2, 3],
-    [4, [5, 6]],
+  [1, 2, 3],
+  [4, [5, 6]],
 ]; // [ [ 1, 2, 3 ], [ 4, [ 5, 6 ] ] ]
 console.log(arr);
-console.log(arr.flat()); // [ 1, 2, 3, 4, [ 5, 6 ] ] 기본 1단계   
+console.log(arr.flat()); // [ 1, 2, 3, 4, [ 5, 6 ] ] 기본 1단계
 console.log(arr.flat(2)); //[ 1, 2, 3, 4, 5, 6 ]
 arr = arr.flat(2);
 
@@ -77,3 +77,16 @@ console.log(arr);
 // 배열을 문자열로 합하기
 let text = arr.join();
 console.log(text); // 0,s,s,0,0,0
+
+async function makeFriedEgg() {
+  let chicken;
+  try {
+    chicken = await getChicken();
+  } catch {
+    chicken = '🐔';
+  }
+  const egg = await fetchEgg(chicken);
+  return fryEgg(egg);
+}
+
+makeFriedEgg().then(console.log);

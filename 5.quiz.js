@@ -1,91 +1,78 @@
 // 퀴즈1: 주어진 배열 안의 딸기 아이템을 키위로 교체하는 함수 만들기
 // 단, 주어진 배열을 수정하지 않도록
 
-function replace(array, from, to) {
-    const replaced = Array.from(array);
-    for(let i = 0; i < replaced.length; i++){
-        if(replaced[i] === from) {
-            replaced[i] = to;
-        }
-    }
-    return replaced;
-}
+// 나의 답📝
+let array = ['🍌', '🍓', '🍇', '🍓'];
 
-const array = ['🍌', '🍓', '🍇', '🍓'];
-const result = replace(array, '🍓', '🥝');
+let result = array.map(item => {
+  if (item.includes('🍓')) {
+    return item.replace('🍓', '🥝');
+  } else {
+    return item;
+  }
+});
+
 console.log(result); // [ '🍌', '🥝', '🍇', '🥝' ]
 
-// 내가 쓴 답
-
-function replace (array, from, to) {
-    const replaced = Array.from(fruits);
-    for(let i = 0; i < replaced.length; i++){
-        if(replaced[i] == from){
-            replaced[i] = to;
-        }
-    } return replaced;
-}
-
-const fruits = ['🍌', '🍓', '🍇', '🍓'];
-console.log(replace(fruits,'🍓', '🥝' ));
-
-
-/* ------------------------------------------------------------- */
+// /* ------------------------------------------------------------- */
 
 // 퀴즈 2
 // 배열과 특정한 요소를 전달받아, 배열 안에 그 요소가 몇 개나 있는지 카운트 하는 함수 만들기
-function count (array, item) {
-    let countItem = 0;
-    for(let i = 0; i < array.length; i++){
-        if(array[i] === item){
-            countItem++;
-        }
-    } return countItem;
-}
 
-console.log(count(['🍌', '🥝', '🍇', '🥝', '🥝' ], '🥝'));
-
-// 내가 쓴 답
-
-function count(array, item){
-    let countFruits = 0; //요소를 새기 위한 카운터 변수 설정
-    for(let i = 0; i < array.length; i++){
-        if(array[i] == item){
-            countFruits++
-        }
-    } return countFruits;
-}
-
-console.log(count(fruits, '🍓'));
-
-/* ------------------------------------------------------------- */
-
-// 퀴즈3: 배열1, 배열2 두개의 배열을 전달받아, 배열1 아이템중 배열 2에 존재하는
-// 아이템만 담고 있는 배열 반환
-
-function match(array, array2){
-    const array3 = [];
-    for(let i = 0; i < array.length; i++){
-        if(array2.includes(array[i])){
-            array3.push(array[i])
-        }
+// 답📝
+function count(array, item) {
+  return array.reduce((count, value) => {
+    if (value === item) {
+      count++;
     }
-    return array3;
+    return count;
+  }, 0);
 }
 
-console.log(match(array, ['🍌', '🍇', '🍋', '🍊']));
+// or
 
-// 내가 쓴 답
-
-function match(array, array2){
-    const matched = [];
-    for(let i = 0; i < array.length; i++){
-        if(array2.includes(array[i])){
-            matched.push(array[i]);
-        }
-    } return matched;
+function count(array, item) {
+  return array.filter(value => value === item).length;
 }
 
-const fruits2 = ['🍌', '🍋', '🍇', '🍈'];
-console.log(match(fruits, fruits2));
+console.log(count(['🍌', '🥝', '🍇', '🥝', '🥝'], '🥝'));
 
+// /* ------------------------------------------------------------- */
+
+// // 퀴즈3: 배열1, 배열2 두개의 배열을 전달받아, 배열1 아이템중 배열 2에 존재하는
+// // 아이템만 담고 있는 배열 반환
+
+// 나의 답📝
+let arrayA = ['🍌', '🥝', '🍇'];
+let arrayB = ['🍌', '🍓', '🍇', '🍓'];
+
+let results = arrayA.filter(items => arrayB.includes(items));
+
+console.log(result); // ['🍌', '🍇'];
+
+// 답📝
+function match(input, search) {
+  return input.filter(item => search.includes(item));
+}
+
+console.log(match(['🍌', '🥝', '🍇'], ['🍌', '🍇', '🍋', '🍊']));
+
+// 5이상(보다 큰)의 숫자들의 평균
+
+// 답📝
+let nums = [3, 16, 5, 25, 4, 34, 21];
+let result2 = nums
+  .filter(num => num > 5)
+  .reduce((avg, num, _, array) => avg + num / array.length, 0);
+
+console.log(result2);
+
+// 내가 쓴 답📝
+let numover5 = nums.reduce((avg, value) => {
+  if (value > 5) {
+    avg.push(value);
+  }
+  return avg;
+}, []);
+
+console.log(numover5); // 5이상(보다 큰)의 숫자들의 배열을 리턴 [ 16, 25, 34, 21 ]
